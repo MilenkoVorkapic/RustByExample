@@ -101,5 +101,14 @@ pub fn two_point_three(){
     println!("second element of the array: {}", xs[1]);
 
     println!("array size: {}", xs.len());
-    println!("array occupies {} bytes",)
+    println!("array occupies {} bytes", mem::size_of_val(&xs));
+
+    println!("Borrow the whole array as a slice");
+    analyze_slice(&xs);
+
+    println!("borrow a section of the array as a slice");
+    analyze_slice(&ys[1..4]);
+ 
+    // Compile error, out of bounds
+    // println!("{}", xs[5]);
 }
