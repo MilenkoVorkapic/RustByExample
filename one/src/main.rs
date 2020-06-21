@@ -8,5 +8,6 @@ fn main(){
     // two::two_point_one();
     // two::two_point_two();
     // two::two_point_three();
-    three::three_point_one();
+    // three::three_point_one();
+    three::three_point_two();
 }
