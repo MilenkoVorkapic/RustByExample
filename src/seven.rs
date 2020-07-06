@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 pub fn seven_point_zero(){
     let x = 5u32;
     
