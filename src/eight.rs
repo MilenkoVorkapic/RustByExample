@@ -350,11 +350,7 @@ pub fn eight_six(){
     }
 
    
-    let d = Test::Bar;
-   
-    if let Test::Bar = d {
-        println!("d is foobar");
-    }
+    
 }
 
 pub fn eight_seven(){

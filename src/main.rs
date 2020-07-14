@@ -6,6 +6,7 @@ mod five;
 mod six;
 mod seven;
 mod eight;
+mod nine;
 
 fn main(){
     // one::one();
@@ -43,5 +44,17 @@ fn main(){
     // eight::eight_five_two();
     // eight::eight_five_three();
     // eight::eight_six();
-    eight::eight_seven();
+    // eight::eight_seven();
+    // nine::nine_zero();
+    // nine::nine_one()
+    // nine::nine_two();
+    // nine::nine_two_one();
+    // nine::nine_two_two();
+    // nine::nine_two_three();
+    // nine::nine_two_four();
+    // nine::nine_two_five();
+    // nine::nine_two_six_one();
+    // nine::nine_two_six_two();
+    // nine::nine_three();
+    nine::nine_four();
 }
