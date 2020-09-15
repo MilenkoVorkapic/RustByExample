@@ -55,12 +55,12 @@ mod my_mod {
     }
 }
 
-fn function(){
+fn function_one(){
     println!("called `function()`");
 }
 
 pub fn ten_one(){
-    function();
+    function_one();
     my_mod::function();
 
     my_mod::indirect_access();
@@ -102,6 +102,74 @@ pub fn ten_two(){
     println!("closed box contents: {}", closed_box.get_content())
 }
 
+mod deeply {
+    pub mod nested {
+        pub fn function(){
+            println!("Called `deeply::nested::function()`");
+        }
+    }
+}
 
+use crate::ten::deeply::nested::{
+    function
+};
 
+use crate::ten::deeply::nested::function as other_function;
 
+// 10.3
+pub fn ten_three(){
+    function();
+    other_function();
+
+    println!("Entering block");
+    {
+        use crate::ten::deeply::nested::function as in_func;
+        in_func();
+        println!("Leaving block!");
+    }
+
+    function();
+}
+
+// 10.4
+fn f(){
+    println!("called `f()`");
+}
+
+mod cool {
+    pub fn f(){
+        println!("called `cool::f()`");
+    }
+}
+
+mod my_f {
+    fn f() {
+        println!("called `my_f::f()`");
+    }
+
+    mod cool {
+        pub fn f(){
+            println!("called my_f::cool::f()");
+        }
+    }
+
+    pub fn indirect_call(){
+        print!("called `my_f::indirect_call()`, that\n> ");
+        self::f();
+        f();
+
+        self::cool::f();
+
+        super::f();
+
+        {
+            use crate::ten::cool::f as root_function;
+            root_function();
+        }
+
+    }
+}
+
+pub fn ten_four(){
+    my_f::indirect_call();
+}
