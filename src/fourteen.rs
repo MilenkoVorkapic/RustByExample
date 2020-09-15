@@ -101,7 +101,7 @@ pub fn three(){
 
 // let s = S(vec![1]);
 
-use std::fmt::Debug;
+use std::fmt::{Debug, Display};
 
 trait HasArea {
     fn area(&self) -> f64;
@@ -148,4 +148,25 @@ pub fn four(){
     println!("A cardinal is {}", red(&cardinal));
     println!("A blue jay is {}", blue(&blue_jay));
     // println!("A turkey is {}", red(&_turkey));
+}
+
+// 5
+fn compare_prints<T: Debug + Display>(t: &T){
+    println!("Debug: {:?}", t);
+    println!("Display: {}", t);
+}
+
+fn compare_types<T: Debug, U: Debug>(t: &T, u: &U){
+    println!("t: {:?}", t);
+    println!("u: {:?}", u);
+}
+
+pub fn five(){
+    let string = "words";
+    let array = [1, 2, 3];
+    let vec = vec![1, 2, 3];
+
+    compare_prints(&string);
+
+    compare_types(&array, &vec);
 }
