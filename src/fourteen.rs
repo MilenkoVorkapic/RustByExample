@@ -170,3 +170,57 @@ pub fn five(){
 
     compare_types(&array, &vec);
 }
+
+
+// 6
+
+/* impl <A: TraitB + TraitC, D: TraitE + TraitF> MyTrait<A, D> for YourType{}
+
+impl <A, D> MyTrait<A, D> for YourType where
+    A: TraitB + TraitC,
+    D: TraitE + TraitF {}
+ */
+
+ trait PrintInOption {
+     fn print_in_option(self);
+ }
+
+ impl<T> PrintInOption for T where 
+    Option<T>: Debug {
+        fn print_in_option(self) {
+            println!("{:?}", Some(self))
+        }
+}
+
+pub fn six(){
+    let vec = vec![1, 2, 3];
+    vec.print_in_option();
+}
+
+
+// 7
+struct Years(i64);
+struct Days(i64);
+
+impl Years {
+    pub fn to_days(&self) -> Days {
+        Days(self.0 * 365)
+    }
+}
+
+impl Days {
+    pub fn to_years(&self) -> Years {
+        Years(self.0 / 365)
+    }
+}
+
+fn ole_enough(age: &Years) -> bool {
+    age.0 >= 18
+}
+
+pub fn seven(){
+    let age = Years(5);
+    let age_days = age.to_days();
+    println!("Old enough {}", ole_enough(&age));
+    println!("Old enought {}", ole_enough(&age_days.to_years()));
+}

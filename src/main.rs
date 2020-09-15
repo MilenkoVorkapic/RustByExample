@@ -69,5 +69,7 @@ fn main(){
     // fourteen::one();
     // fourteen::two();
     // fourteen::four();
-    fourteen::five();
+    // fourteen::five();
+    // fourteen::six();
+    fourteen::seven();
 }
